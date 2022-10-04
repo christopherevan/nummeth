@@ -32,7 +32,7 @@
         }
         .boxinput{
             font-size: 1rem;
-            font-weight: 300;
+            font-weight: 600;
             width: 15%;
             background: whitesmoke;
             color: #194569;
@@ -151,7 +151,7 @@
 <script>
     $(document).ready(function(){
         if ($('#ds').is(':checked')) {
-            var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' name='angka_signifikan' min=1 required></p>"
+            var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -159,7 +159,7 @@
 
             $('#kriteria-berhenti-ds').append(input);
         } else if ($('#mi').is(':checked')) {
-            var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' name='stopMaxIter' min=1 required></p>"
+            var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -167,7 +167,7 @@
 
             $('#kriteria-berhenti-maxiter').append(input);
         } else {
-            var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' name='stopFxr' min=0 max=1 step=any required></p>"
+            var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopFxr' min=0 max=1 step=any required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -178,7 +178,7 @@
     })
 
     $('body').on('click', '#mi', function(){
-        var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' name='stopMaxIter' min=1 required></p>"
+        var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
@@ -188,7 +188,7 @@
     })
 
     $('body').on('click', '#ds', function(){
-        var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' name='angka_signifikan' min=1 required></p>"
+        var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
@@ -198,7 +198,7 @@
     })
 
     $('body').on('click', '#fxr', function(){
-        var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' name='stopFxr' min=0 max=1 step=any required></p>"
+        var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopFxr' min=0 max=1 step=any required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
