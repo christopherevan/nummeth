@@ -33,7 +33,7 @@
         .boxinput{
             font-size: 1rem;
             font-weight: 300;
-            width: 90%;
+            width: 15%;
             background: whitesmoke;
             color: #194569;
             padding: 5px 5px 5px 5px;
