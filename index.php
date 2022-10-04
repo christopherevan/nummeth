@@ -9,6 +9,9 @@
         * {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        body{
+            background: linear-gradient(90deg, rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1%);
+        }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
