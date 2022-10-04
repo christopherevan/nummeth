@@ -20,6 +20,28 @@
             text-align: center;
             padding: 10px;
         }
+        .button{
+            font-size: 1rem;
+            font-weight: 300;
+            color: whitesmoke;
+            padding: 5px 5px 5px 5px;
+            border-radius: 5px;
+            background: #194569;
+            box-shadow: 0 1px 3px -2px #9098A9;
+            cursor: pointer;
+        }
+        .boxinput{
+            font-size: 1rem;
+            font-weight: 300;
+            width: 90%;
+            background: whitesmoke;
+            color: #194569;
+            padding: 5px 5px 5px 5px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px -2px #9098A9;
+            font-size: 14px;
+            text-align: center;
+        }
 </style>
 </head>
 <body>
@@ -71,9 +93,9 @@
         ?>
         
         <h2>Root Calculator (Bisection Method)</h2>
-        <p><label>Persamaan </label><input type="text" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
-        <p><label>Initial xl </label><input type="number" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
-        <p><label>Initial xu </label><input type="number" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
+        <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
+        <p><label>Initial xl </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
+        <p><label>Initial xu </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
         <p>Kriteria Berhenti</p>
 
         <div style="padding-left: 10px;">
@@ -88,7 +110,7 @@
             <div id="kriteria-berhenti-fxr">
             </div>
         </div>
-        <input type="submit" name="submit" value="Calculate"><br><br>
+        <input type="submit" class="button" name="submit" value="Calculate"><br><br>
     </form>
 
     <?php
