@@ -101,18 +101,18 @@
         <div>
             <div style="width: 50%; display: inline-block;">
             <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
-            <p><label>Initial \(xl\) = </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
-            <p><label>Initial \(xu\) = </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
+            <p><label>Initial \(x_l\) = </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
+            <p><label>Initial \(x_u\) = </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
             <p>Kriteria Berhenti</p>
 
             <div style="padding-left: 10px;">
-                <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan \(|\epsilon _a| \lt \epsilon _s\)</label></p>
+                <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan \(\large{|\epsilon _a| \lt \epsilon _s}\)</label></p>
                 <div id="kriteria-berhenti-ds">
                 </div>
                 <p><input type="radio" name="kriteria" id="mi" value="2" class="radiobtn"><label for="mi">Maksimum Iterasi</label></p>
                 <div id="kriteria-berhenti-maxiter">
                 </div>
-                <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">\(|f(xr)| \lt \varepsilon\)</label></p>
+                <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">\(|f(x_r)| \lt \varepsilon\)</label></p>
                 <div id="kriteria-berhenti-fxr">
                 </div>
             </div>
@@ -170,7 +170,7 @@
             // echo "<p>Angka Signifikan: $as</p>";
             // echo "<p>Persamaan: $persamaan</p>";
             echo "<table>";
-            echo "<tr><th>Iterasi</th><th>\(xl\)</th><th>\(xu\)</th><th>\(xr\)</th><th>\(f(xl)\)</th><th>\(f(xu)\)</th><th>\(f(xr)\)</th><th>\(|\\epsilon _a|\%\)</th></tr>";
+            echo "<tr><th>Iterasi</th><th>\(x_l\)</th><th>\(x_u\)</th><th>\(x_r\)</th><th>\(f(x_l)\)</th><th>\(f(x_u)\)</th><th>\(f(x_r)\)</th><th>\(|\\epsilon _a|\%\)</th></tr>";
             // $output = str_replace("$$", "\(")
             echo($output);
         }
