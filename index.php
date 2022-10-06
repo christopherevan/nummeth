@@ -42,9 +42,13 @@
             font-size: 14px;
             text-align: center;
         }
+        .container {
+            margin: 0 auto;
+        }
 </style>
 </head>
 <body>
+    <div class="container">
     <form action="index.php" method="post" autocomplete="off">
         <?php
             $input_persamaan = "";
@@ -120,7 +124,7 @@
         
         // biar ga error2, pakek pythonnya terakhir2 aja biar gampang styling halamannya
         // Body Tabel
-        $output = shell_exec("python hitung.py '$persamaan' $as $ixl $ixu $stopMethod $maxIter $epsilon");
+        $output = shell_exec("python hitung.py $persamaan $as $ixl $ixu $stopMethod $maxIter $epsilon");
 
         // yg dibawah ini output dari pythonnya
         // $output = "<tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>-</td></tr>
@@ -146,6 +150,7 @@
         }
     }
     ?>
+    </div>
 </body>
 <script src="./jquery-3.5.1.min.js"></script>
 <script>
