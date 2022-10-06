@@ -165,7 +165,7 @@
 
         // if dibawah ngecek fxl*fxu >= 0
         if (!str_contains($output, "<tr>")) {
-            die($output);
+            echo($output);
         } else {
             // echo "<p>Angka Signifikan: $as</p>";
             // echo "<p>Persamaan: $persamaan</p>";
