@@ -97,24 +97,55 @@
         ?>
         
         <h2>Root Calculator (Bisection Method)</h2>
-        <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
-        <p><label>Initial xl </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
-        <p><label>Initial xu </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
-        <p>Kriteria Berhenti</p>
+        <div>
+            <div style="width: 50%; display: inline-block;">
+            <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
+            <p><label>Initial xl </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
+            <p><label>Initial xu </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
+            <p>Kriteria Berhenti</p>
 
-        <div style="padding-left: 10px;">
-        
-            <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan |ea| < es</label></p>
-            <div id="kriteria-berhenti-ds">
+            <div style="padding-left: 10px;">
+            
+                <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan |ea| < es</label></p>
+                <div id="kriteria-berhenti-ds">
+                </div>
+                <p><input type="radio" name="kriteria" id="mi" value="2" class="radiobtn"><label for="mi">Maksimum Iterasi</label></p>
+                <div id="kriteria-berhenti-maxiter">
+                </div>
+                <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">|f(xr)| < e</label></p>
+                <div id="kriteria-berhenti-fxr">
+                </div>
             </div>
-            <p><input type="radio" name="kriteria" id="mi" value="2" class="radiobtn"><label for="mi">Maksimum Iterasi</label></p>
-            <div id="kriteria-berhenti-maxiter">
+            <input type="submit" class="button" name="submit" value="Calculate"><br><br>
             </div>
-            <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">|f(xr)| < e</label></p>
-            <div id="kriteria-berhenti-fxr">
+            <div style=" display: inline-block;">
+                <table>
+                    <tr>
+                        <th colspan="2">Cara Penulisan Persamaan</th>
+                        <!-- <th></th> -->
+                    </tr>
+                    <!-- <tr>
+                        <td colspan="2">Gunakan sintaks Python</td>
+                    </tr> -->
+                    <tr>
+                        <td>Perkalian</td>
+                        <td>Gunakan <b>*</b>, contoh 5x = 5*x</td>
+                    </tr>
+                    <tr>
+                        <td>Pangkat</td>
+                        <td>Gunakan <b>**</b>, contoh x^3+x^2 = x**3+x**2</td>
+                    </tr>
+                    <tr>
+                        <td>Fungsi</td>
+                        <td>Gunakan <b>math.*()</b>, contoh akar = math.sqrt(...)</td>
+                    </tr>
+                    <tr>
+                        <td>Konstanta</td>
+                        <td>Gunakan <b>math.*</b>, contoh e = math.e</td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <input type="submit" class="button" name="submit" value="Calculate"><br><br>
     </form>
 
     <?php
