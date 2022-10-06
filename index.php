@@ -12,6 +12,9 @@
         body{
             background: linear-gradient(90deg, rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1%);
         }
+        a {
+            text-decoration: none;
+        }
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
@@ -19,6 +22,7 @@
         th, td {
             text-align: center;
             padding: 10px;
+            background-color: whitesmoke;
         }
         .button{
             font-size: 1rem;
@@ -44,8 +48,11 @@
         }
         .container {
             margin: 0 auto;
+            /* text-align: center; */
         }
 </style>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="container">
@@ -58,7 +65,6 @@
             $maxIter = 0;
             $epsilon = 0;
             $as = 0;
-            
 
             if (isset($_POST['submit'])) {
 
@@ -84,67 +90,55 @@
                 $disabled = "disabled";
                 $py_persamaan = $persamaan;
 
-                // if (str_contains($persamaan, "e")) {
-                //     $py_persamaan = str_replace("e", )
-                // }
-
                 $input_persamaan = $persamaan;
                 $input_xl = $ixl;
                 $input_xu = $ixu;
-
-                // echo "inputxlxu $ixl $ixu";
             }
         ?>
         
         <h2>Root Calculator (Bisection Method)</h2>
+        <!-- CONTROLS -->
         <div>
             <div style="width: 50%; display: inline-block;">
             <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
-            <p><label>Initial xl </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
-            <p><label>Initial xu </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
+            <p><label>Initial \(xl\) = </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
+            <p><label>Initial \(xu\) = </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
             <p>Kriteria Berhenti</p>
 
             <div style="padding-left: 10px;">
-            
-                <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan |ea| < es</label></p>
+                <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan \(|\epsilon _a| \lt \epsilon _s\)</label></p>
                 <div id="kriteria-berhenti-ds">
                 </div>
                 <p><input type="radio" name="kriteria" id="mi" value="2" class="radiobtn"><label for="mi">Maksimum Iterasi</label></p>
                 <div id="kriteria-berhenti-maxiter">
                 </div>
-                <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">|f(xr)| < e</label></p>
+                <p><input type="radio" name="kriteria" id="fxr" value="3" class="radiobtn"><label for="fxr">\(|f(xr)| \lt \varepsilon\)</label></p>
                 <div id="kriteria-berhenti-fxr">
                 </div>
             </div>
             <input type="submit" class="button" name="submit" value="Calculate"><br><br>
             </div>
-            <div style=" display: inline-block;">
                 <table>
                     <tr>
-                        <th colspan="2">Cara Penulisan Persamaan</th>
-                        <!-- <th></th> -->
+                        <th colspan="2">Cara Penulisan Persamaan <a href="https://www.w3schools.com/python/module_math.asp">(?)</a></th>
                     </tr>
-                    <!-- <tr>
-                        <td colspan="2">Gunakan sintaks Python</td>
-                    </tr> -->
                     <tr>
                         <td>Perkalian</td>
-                        <td>Gunakan <b>*</b>, contoh 5x = 5*x</td>
+                        <td>Gunakan <b>*</b>, contoh \(5x\) = 5*x</td>
                     </tr>
                     <tr>
                         <td>Pangkat</td>
-                        <td>Gunakan <b>**</b>, contoh x^3+x^2 = x**3+x**2</td>
+                        <td>Gunakan <b>**</b>, contoh \(x^3+x^2\) = x**3+x**2</td>
                     </tr>
                     <tr>
                         <td>Fungsi</td>
-                        <td>Gunakan <b>math.*()</b>, contoh akar = math.sqrt(...)</td>
+                        <td>Gunakan <b>math.*()</b>, contoh \(\sqrt{(...)}\) = math.sqrt(...)</td>
                     </tr>
                     <tr>
                         <td>Konstanta</td>
-                        <td>Gunakan <b>math.*</b>, contoh e = math.e</td>
+                        <td>Gunakan <b>math.*</b>, contoh \(e\) = math.e</td>
                     </tr>
                 </table>
-            </div>
         </div>
     </form>
 
@@ -155,7 +149,7 @@
         
         // biar ga error2, pakek pythonnya terakhir2 aja biar gampang styling halamannya
         // Body Tabel
-        $output = shell_exec("python hitung.py $persamaan $as $ixl $ixu $stopMethod $maxIter $epsilon");
+        $output = shell_exec("python hitung.py $persamaan $as $ixl $ixu $stopMethod $maxIter $epsilon 2>&1");
 
         // yg dibawah ini output dari pythonnya
         // $output = "<tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>-</td></tr>
@@ -174,9 +168,10 @@
             die($output);
         } else {
             // echo "<p>Angka Signifikan: $as</p>";
-            echo "<p>Persamaan: $persamaan</p>";
+            // echo "<p>Persamaan: $persamaan</p>";
             echo "<table>";
-            echo "<tr><th>Iterasi</th><th>xl</th><th>xu</th><th>xr</th><th>f(xl)</th><th>f(xu)</th><th>f(xr)</th><th>|ea|%</th></tr>";
+            echo "<tr><th>Iterasi</th><th>\(xl\)</th><th>\(xu\)</th><th>\(xr\)</th><th>\(f(xl)\)</th><th>\(f(xu)\)</th><th>\(f(xr)\)</th><th>\(|\\epsilon _a|\%\)</th></tr>";
+            // $output = str_replace("$$", "\(")
             echo($output);
         }
     }

@@ -2,6 +2,8 @@ import sys
 import pandas as pd
 import numpy as np
 import math
+import os
+
 
 def evaluate(xl, xu, xr, f_xl, f_xr):
     impact = ""
@@ -60,6 +62,7 @@ def hitung():
         # break
 
 persamaan = sys.argv[1]
+# tex_persamaan = os.system("converter.py " + persamaan)
 angka_signifikan = int(sys.argv[2])
 
 es = float(0.5*10**(2-angka_signifikan))
@@ -87,7 +90,7 @@ result = pd.DataFrame()
 
 absFxr = float(100.0)
 
-metodeStop = 'Angka Signifikan |ea| < es<br>'
+metodeStop = 'Angka Signifikan \(|\epsilon _a| \lt \epsilon _s\)<br>'
 
 if (f_xl_xu < 0):
     i = 0
@@ -162,7 +165,7 @@ if (f_xl_xu < 0):
         #     root = xr
     else:
         
-        metodeStop = '|f(xr)| < ' + str(epsilon) + '<br>'
+        metodeStop = '\(|f(xr) \lt \)' + str(epsilon) + '<br>'
         while absFxr >= epsilon:
             xr_prev = xr
             xr = float((xl+xu)/2)
@@ -209,4 +212,4 @@ if (f_xl_xu < 0):
     output += "<p>Salah satu akar dari {} adalah {}</p>".format(persamaan, root)
     print(output)
 else: 
-    print("-- WARNING -- f(xl)*f(xu) >= 0")
+    print("-- WARNING -- \(f(xl)\\times f(xu)\geqslant0\)")
