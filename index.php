@@ -8,9 +8,11 @@
     <style>
         * {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
         }
         body{
-            background: linear-gradient(90deg, rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1%);
+            /* background: linear-gradient(90deg, rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1%); */
+            background: linear-gradient(to left top, #f2f8ff, #e2edfd, #d3e3fb, #c5d7f9, #b9ccf6);
         }
         a {
             text-decoration: none;
@@ -22,33 +24,45 @@
         th, td {
             text-align: center;
             padding: 10px;
-            background-color: whitesmoke;
         }
         .button{
-            font-size: 1rem;
-            font-weight: 300;
+            font-weight: 600;
             color: whitesmoke;
-            padding: 5px 5px 5px 5px;
-            border-radius: 5px;
-            background: #194569;
-            box-shadow: 0 1px 3px -2px #9098A9;
+            padding: 8px 15px 8px 15px;
+            border-radius: 8px;
+            border-style: none;
+            background: #4560BE;
+            /* box-shadow: 0 1px 3px -2px #9098A9; */
             cursor: pointer;
         }
         .boxinput{
             font-size: 1rem;
             font-weight: 600;
-            width: 15%;
-            background: whitesmoke;
+            width: 30%;
             color: #194569;
             padding: 5px 5px 5px 5px;
             border-radius: 5px;
+            border-style: none;
             box-shadow: 0 1px 3px -2px #9098A9;
             font-size: 14px;
             text-align: center;
         }
         .container {
-            margin: 0 auto;
-            /* text-align: center; */
+            /* margin: 0 auto; */
+            margin-top: 30px;
+            margin-bottom: 60px;
+            /* border-radius: 10px; */
+            padding: 30px;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: auto;
+            height: auto;
+            background: linear-gradient(to right top, #f2f8ff, #e7f1ff, #dceaff, #d3e3ff, #cbdbff);
+        }
+        label{
+            width: 120px;
         }
 </style>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -96,11 +110,33 @@
             }
         ?>
         
-        <h2>Root Calculator (Bisection Method)</h2>
+        <h2 style="font-size: 24px;">Root Calculator (Bisection Method)</h2>
+        <!-- HOW TO USE -->
+        <table>
+            <tr>
+                <th colspan="2">Cara Penulisan Persamaan <a href="https://www.w3schools.com/python/module_math.asp">(?)</a></th>
+            </tr>
+            <tr>
+                <td>Perkalian</td>
+                <td>Gunakan <b>*</b>, contoh \(5x\) = 5*x</td>
+            </tr>
+            <tr>
+                <td>Pangkat</td>
+                <td>Gunakan <b>**</b>, contoh \(x^3+x^2\) = x**3+x**2</td>
+            </tr>
+            <tr>
+                <td>Fungsi</td>
+                <td>Gunakan <b>math.*()</b>, contoh \(\sqrt{(...)}\) = math.sqrt(...)</td>
+            </tr>
+            <tr>
+                <td>Konstanta</td>
+                <td>Gunakan <b>math.*</b>, contoh \(e\) = math.e</td>
+            </tr>
+        </table>
         <!-- CONTROLS -->
         <div>
             <div style="width: 50%; display: inline-block;">
-            <p><label>Persamaan </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
+            <p><label>Persamaan: </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
             <p><label>Initial \(x_l\) = </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
             <p><label>Initial \(x_u\) = </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
             <p>Kriteria Berhenti</p>
@@ -118,27 +154,6 @@
             </div>
             <input type="submit" class="button" name="submit" value="Calculate"><br><br>
             </div>
-                <table>
-                    <tr>
-                        <th colspan="2">Cara Penulisan Persamaan <a href="https://www.w3schools.com/python/module_math.asp">(?)</a></th>
-                    </tr>
-                    <tr>
-                        <td>Perkalian</td>
-                        <td>Gunakan <b>*</b>, contoh \(5x\) = 5*x</td>
-                    </tr>
-                    <tr>
-                        <td>Pangkat</td>
-                        <td>Gunakan <b>**</b>, contoh \(x^3+x^2\) = x**3+x**2</td>
-                    </tr>
-                    <tr>
-                        <td>Fungsi</td>
-                        <td>Gunakan <b>math.*()</b>, contoh \(\sqrt{(...)}\) = math.sqrt(...)</td>
-                    </tr>
-                    <tr>
-                        <td>Konstanta</td>
-                        <td>Gunakan <b>math.*</b>, contoh \(e\) = math.e</td>
-                    </tr>
-                </table>
         </div>
     </form>
 
@@ -182,7 +197,7 @@
 <script>
     $(document).ready(function(){
         if ($('#ds').is(':checked')) {
-            var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
+            var input = "<p style='margin-left:22px;'><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -190,7 +205,7 @@
 
             $('#kriteria-berhenti-ds').append(input);
         } else if ($('#mi').is(':checked')) {
-            var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
+            var input = "<p style='margin-left:22px;'><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -198,7 +213,7 @@
 
             $('#kriteria-berhenti-maxiter').append(input);
         } else {
-            var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopFxr' min=0 max=1 step=any required></p>"
+            var input = "<p style='margin-left:22px;'><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' style='margin-left:5px' name='stopFxr' min=0 max=1 step=any required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -209,7 +224,7 @@
     })
 
     $('body').on('click', '#mi', function(){
-        var input = "<p><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
+        var input = "<p style='margin-left:22px;'><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' style='margin-left:5px' name='stopMaxIter' min=1 required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
@@ -219,7 +234,7 @@
     })
 
     $('body').on('click', '#ds', function(){
-        var input = "<p><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
+        var input = "<p style='margin-left:22px;'><span>Angka Signifikan:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='angka_signifikan' min=1 required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
@@ -229,7 +244,7 @@
     })
 
     $('body').on('click', '#fxr', function(){
-        var input = "<p><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopFxr' min=0 max=1 step=any required></p>"
+        var input = "<p style='margin-left:22px;'><span>Epsilon:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopFxr' min=0 max=1 step=any required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
