@@ -49,16 +49,15 @@
         }
         .container {
             /* margin: 0 auto; */
-            margin-top: 30px;
+            margin-top: 90px;
             margin-bottom: 60px;
-            /* border-radius: 10px; */
             padding: 30px;
             position: absolute;
-            top: 60%;
+            top: 70%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: auto;
-            height: auto;
+            width: 1100px;
+            height: 1500px;
             background: linear-gradient(to right top, #f2f8ff, #e7f1ff, #dceaff, #d3e3ff, #cbdbff);
         }
         label{
