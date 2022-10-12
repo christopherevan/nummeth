@@ -69,7 +69,7 @@
 </head>
 <body>
     <div class="container">
-    <form action="index.php" method="post" autocomplete="off">
+    <form action="./" method="post">
         <?php
             $input_persamaan = "";
             $input_xl = "";
