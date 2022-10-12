@@ -38,7 +38,7 @@
         .boxinput{
             font-size: 1rem;
             font-weight: 600;
-            width: 30%;
+            width: 36%;
             color: #194569;
             padding: 5px 5px 5px 5px;
             border-radius: 5px;
@@ -53,11 +53,11 @@
             margin-bottom: 60px;
             padding: 30px;
             position: absolute;
-            top: 70%;
+            top: 72%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 1100px;
-            height: 1500px;
+            min-width: 1400px;
+            min-height: 1500px;
             background: linear-gradient(to right top, #f2f8ff, #e7f1ff, #dceaff, #d3e3ff, #cbdbff);
         }
         label{
@@ -113,7 +113,7 @@
         <!-- HOW TO USE -->
         <table>
             <tr>
-                <th colspan="2">Cara Penulisan Persamaan <a href="https://www.w3schools.com/python/module_math.asp">(?)</a></th>
+                <th colspan="2">Cara Penulisan Persamaan <a href="https://www.w3schools.com/python/module_math.asp" target="_blank">(?)</a></th>
             </tr>
             <tr>
                 <td>Perkalian</td>
@@ -135,9 +135,9 @@
         <!-- CONTROLS -->
         <div>
             <div style="width: 50%; display: inline-block;">
-            <p><label>Persamaan: </label><input type="text" class="boxinput" name="persamaan" id="" <?php echo "value='$input_persamaan'"; ?> required autocomplete="off" autofocus></p>
-            <p><label>Initial \(x_l\) = </label><input type="number" class="boxinput" name="initXl" id="" <?php echo "value=$input_xl"; ?> required autocomplete="off"></p>
-            <p><label>Initial \(x_u\) = </label><input type="number" class="boxinput" name="initXu" id="" <?php echo "value=$input_xu"; ?> required autocomplete="off"></p>
+            <p><label>Persamaan: </label><input type="text" class="boxinput" name="persamaan" <?php echo "value='$input_persamaan'"; ?> required autofocus></p>
+            <p><label>Initial \(x_l\) = </label><input type="number" class="boxinput" name="initXl" step="any" <?php echo "value=$input_xl"; ?> required></p>
+            <p><label>Initial \(x_u\) = </label><input type="number" class="boxinput" name="initXu"  step="any" <?php echo "value=$input_xu"; ?> required></p>
             <p>Kriteria Berhenti</p>
 
             <div style="padding-left: 10px;">
@@ -159,25 +159,9 @@
     <?php
     if (isset($_POST['submit'])) {
         
-
-        
-        // biar ga error2, pakek pythonnya terakhir2 aja biar gampang styling halamannya
-        // Body Tabel
         $output = shell_exec("python hitung.py $persamaan $as $ixl $ixu $stopMethod $maxIter $epsilon 2>&1");
 
-        // yg dibawah ini output dari pythonnya
-        // $output = "<tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>-</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             <tr><td>1</td><td>1</td><td>2</td><td>1.5</td><td>+</td><td>-</td><td>+</td><td>1.23456789</td></tr>
-        //             </table>
-        //             <p>Salah satu akar dari {} adalah 1.5939488</p>";
-
-        // if dibawah ngecek fxl*fxu >= 0
+         // if dibawah ngecek fxl*fxu >= 0
         if (!str_contains($output, "<tr>")) {
             echo($output);
         } else {
