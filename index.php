@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kalkulatorz</title>
+    <title>Root Calculator (Bisection Method)</title>
     <style>
         * {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -188,7 +188,7 @@
 
             $('#kriteria-berhenti-ds').append(input);
         } else if ($('#mi').is(':checked')) {
-            var input = "<p style='margin-left:22px;'><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
+            var input = "<p style='margin-left:22px;'><span>Maksimum Iterasi:&nbsp;&nbsp;</span><input type='number' class='boxinput' name='stopMaxIter' min=1 required></p>"
 
             $('#kriteria-berhenti-fxr').children().remove();
             $('#kriteria-berhenti-maxiter').children().remove();
@@ -207,7 +207,7 @@
     })
 
     $('body').on('click', '#mi', function(){
-        var input = "<p style='margin-left:22px;'><span>Maximum Iteration:&nbsp;&nbsp;</span><input type='number' class='boxinput' style='margin-left:5px' name='stopMaxIter' min=1 required></p>"
+        var input = "<p style='margin-left:22px;'><span>Maksimum Iterasi:&nbsp;&nbsp;</span><input type='number' class='boxinput' style='margin-left:5px' name='stopMaxIter' min=1 required></p>"
 
         $('#kriteria-berhenti-fxr').children().remove();
         $('#kriteria-berhenti-maxiter').children().remove();
