@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import math
 import os
-
+from decimal import *
 
 def evaluate(xl, xu, xr, f_xl, f_xr):
     impact = ""
@@ -19,14 +19,14 @@ def evaluate(xl, xu, xr, f_xl, f_xr):
     return impact, xl, xu, xr
 
 def calculateEa(xr, xr_prev):
-    return float((abs((xr - xr_prev)/xr)*100))
+    return Decimal((abs((xr - xr_prev)/xr)*100))
 
 # def hitung(xr, persamaan_xl, persamaan_xu, persamaan_xr,):
 #     xr_prev = xr
-#     xr = float((xl+xu)/2)
-#     f_xl = float(eval(persamaan_xl))
-#     f_xu = float(eval(persamaan_xu))
-#     f_xr = float(eval(persamaan_xr))
+#     xr = Decimal((xl+xu)/2)
+#     f_xl = Decimal(eval(persamaan_xl))
+#     f_xu = Decimal(eval(persamaan_xu))
+#     f_xr = Decimal(eval(persamaan_xr))
 
 #     if (i != 0):
 #         ea = calculateEa(xr, xr_prev)
@@ -52,30 +52,30 @@ persamaan = sys.argv[1]
 # tex_persamaan = os.system("converter.py " + persamaan)
 angka_signifikan = int(sys.argv[2])
 
-es = float(0.5*10**(2-angka_signifikan))
-ea = float(100.0)
+es = Decimal(0.5*10**(2-angka_signifikan))
+ea = Decimal(100.0)
 
-xl = float(sys.argv[3])
-xu = float(sys.argv[4])
-xr = float(0.0)
-root = float(0.0)
+xl = Decimal(sys.argv[3])
+xu = Decimal(sys.argv[4])
+xr = Decimal(0.0)
+root = Decimal(0.0)
 
 stopMethod = int(sys.argv[5]) # 1 = Digit Signifikan, 2 = Max Iterasi, 3 = |f(xr)|<e
 maxIter = int(sys.argv[6])
-epsilon = float(sys.argv[7])
+epsilon = Decimal(sys.argv[7])
 
 persamaan_xl = persamaan.replace('x', 'xl')
 persamaan_xu = persamaan.replace('x', 'xu')
 persamaan_xr = persamaan.replace('x', 'xr')
 
-f_xl = float(eval(persamaan_xl))
-f_xu = float(eval(persamaan_xu))
+f_xl = Decimal(eval(persamaan_xl))
+f_xu = Decimal(eval(persamaan_xu))
 
-f_xl_xu = float(f_xl*f_xu)
+f_xl_xu = Decimal(f_xl*f_xu)
 
 result = pd.DataFrame()
 
-absFxr = float(100.0)
+absFxr = Decimal(100.0)
 
 metodeStop = 'Angka Signifikan \(|\epsilon _a| \lt \epsilon _s\)<br>'
 
@@ -85,10 +85,10 @@ if (f_xl_xu < 0):
 
         while ea > es:
             xr_prev = xr
-            xr = float((xl+xu)/2)
-            f_xl = float(eval(persamaan_xl))
-            f_xu = float(eval(persamaan_xu))
-            f_xr = float(eval(persamaan_xr))
+            xr = Decimal((xl+xu)/2)
+            f_xl = Decimal(eval(persamaan_xl))
+            f_xu = Decimal(eval(persamaan_xu))
+            f_xr = Decimal(eval(persamaan_xr))
 
             if (i != 0):
                 ea = calculateEa(xr, xr_prev)
@@ -120,10 +120,10 @@ if (f_xl_xu < 0):
         metodeStop = "Maksimum iterasi : " + str(maxIter) + " iterasi"
         while i < maxIter:
             xr_prev = xr
-            xr = float((xl+xu)/2)
-            f_xl = float(eval(persamaan_xl))
-            f_xu = float(eval(persamaan_xu))
-            f_xr = float(eval(persamaan_xr))
+            xr = Decimal((xl+xu)/2)
+            f_xl = Decimal(eval(persamaan_xl))
+            f_xu = Decimal(eval(persamaan_xu))
+            f_xr = Decimal(eval(persamaan_xr))
 
             if (i != 0):
                 ea = calculateEa(xr, xr_prev)
@@ -153,10 +153,10 @@ if (f_xl_xu < 0):
         metodeStop = '\(|f(xr) \lt \)' + str(epsilon) + '<br>'
         while absFxr >= epsilon:
             xr_prev = xr
-            xr = float((xl+xu)/2)
-            f_xl = float(eval(persamaan_xl))
-            f_xu = float(eval(persamaan_xu))
-            f_xr = float(eval(persamaan_xr))
+            xr = Decimal((xl+xu)/2)
+            f_xl = Decimal(eval(persamaan_xl))
+            f_xu = Decimal(eval(persamaan_xu))
+            f_xr = Decimal(eval(persamaan_xr))
             absFxr = abs(f_xr)
 
             if (i != 0):
