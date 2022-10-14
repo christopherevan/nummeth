@@ -163,7 +163,7 @@ if (f_xl_xu < 0):
     output += "</table>"
     # Kalo mau ganti kalimat hasilnya dibawah
     output += "<p>Metode Stop: " + metodeStop + " </p>"
-    output += "<p>Salah satu akar dari {} adalah {}</p>".format(persamaan, root)
+    output += "<p>Salah satu akar dari {}=0 adalah {}</p>".format(persamaan, root)
     print(output)
 else: 
     print("-- WARNING -- \(f(xl)\\times f(xu)\geqslant0\)")
