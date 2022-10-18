@@ -21,10 +21,8 @@ def calculateEa(xr, xr_prev):
 
 persamaan = sys.argv[1]
 angka_signifikan = int(sys.argv[2])
-
 es = float(0.5*10**(2-angka_signifikan))
 ea = float(100.0)
-
 xl = float(sys.argv[3])
 xu = float(sys.argv[4])
 xr = float(0.0)
@@ -40,13 +38,10 @@ persamaan_xr = persamaan.replace('x', 'xr')
 
 f_xl = float(eval(persamaan_xl))
 f_xu = float(eval(persamaan_xu))
-
 f_xl_xu = float(f_xl*f_xu)
 
 result = pd.DataFrame()
-
 absFxr = float(100.0)
-
 metodeStop = 'Angka Signifikan \(|\epsilon _a| \lt \epsilon _s\)<br>'
 
 if (f_xl_xu < 0):
@@ -67,7 +62,8 @@ if (f_xl_xu < 0):
             if (i == 0):
                 print_ea = '-'
 
-            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
+            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 
+                'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
             df = pd.DataFrame.from_dict(row)
             result = pd.concat([result, df])
 
@@ -104,7 +100,8 @@ if (f_xl_xu < 0):
             if (i == 0):
                 print_ea = '-'
 
-            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
+            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 
+                'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
             df = pd.DataFrame.from_dict(row)
             result = pd.concat([result, df])
 
@@ -118,9 +115,6 @@ if (f_xl_xu < 0):
                 break
 
             i += 1
-        # if (ea < es):
-        #     root = xr
-    # |f(xr)|<e
     else:
         metodeStop = '\(|f(xr)| \lt \)' + str(epsilon) + '<br>'
         while absFxr >= epsilon:
@@ -138,7 +132,8 @@ if (f_xl_xu < 0):
             if (i == 0):
                 print_ea = '-'
 
-            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
+            row = [{'iterasi': i+1, 'xl': xl, 'xu': xu, 'xr': xr, 'f(xl)': f_xl, 
+                'f(xu)': f_xu, 'f(xr)': f_xr, '|ea|%': print_ea}]
             df = pd.DataFrame.from_dict(row)
             result = pd.concat([result, df])
 
@@ -161,7 +156,7 @@ if (f_xl_xu < 0):
         root = row['xr']
     
     output += "</table>"
-    # Kalo mau ganti kalimat hasilnya dibawah
+    # Kesimpulan
     output += "<p>Metode Stop: " + metodeStop + " </p>"
     output += "<p>Salah satu akar dari {}=0 adalah {}</p>".format(persamaan, root)
     print(output)

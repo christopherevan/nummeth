@@ -81,7 +81,6 @@
             $as = 0;
 
             if (isset($_POST['submit'])) {
-
                 if (isset($_POST['angka_signifikan'])) {
                     $as = $_POST['angka_signifikan'];
                 }
@@ -94,9 +93,7 @@
                     $epsilon = $_POST['stopFxr'];
                 }
         
-                // print_r($_POST);
                 $stopMethod = $_POST['kriteria'];
-                // $as = $_POST['angka_signifikan'];
                 $persamaan = $_POST['persamaan'];
                 $ixl = $_POST['initXl'];
                 $ixu = $_POST['initXu'];
@@ -133,14 +130,14 @@
                 <td>Gunakan <b>math.*</b>, contoh \(e\) = math.e</td>
             </tr>
         </table>
-        <!-- CONTROLS -->
+        <!-- INPUT -->
         <div>
             <div style="width: 50%; display: inline-block;">
             <p><label>Persamaan: </label><input type="text" class="boxinput" name="persamaan" <?php echo "value='$input_persamaan'"; ?> required autofocus></p>
             <p><label>Initial \(x_l\) = </label><input type="number" class="boxinput" name="initXl" step="any" <?php echo "value=$input_xl"; ?> required></p>
             <p><label>Initial \(x_u\) = </label><input type="number" class="boxinput" name="initXu"  step="any" <?php echo "value=$input_xu"; ?> required></p>
+            
             <p>Kriteria Berhenti</p>
-
             <div style="padding-left: 10px;">
                 <p><input type="radio" name="kriteria" id="ds" value="1" class="radiobtn" checked><label for="ds">Digit Signifikan \(\large{|\epsilon _a| \lt \epsilon _s}\)</label></p>
                 <div id="kriteria-berhenti-ds">
@@ -166,11 +163,9 @@
         if (!str_contains($output, "<tr>")) {
             echo($output);
         } else {
-            // echo "<p>Angka Signifikan: $as</p>";
-            // echo "<p>Persamaan: $persamaan</p>";
             echo "<table>";
-            echo "<tr><th>Iterasi</th><th>\(x_l\)</th><th>\(x_u\)</th><th>\(x_r\)</th><th>\(f(x_l)\)</th><th>\(f(x_u)\)</th><th>\(f(x_r)\)</th><th>\(|\\epsilon _a|\%\)</th></tr>";
-            // $output = str_replace("$$", "\(")
+            echo "<tr><th>Iterasi</th><th>\(x_l\)</th><th>\(x_u\)</th><th>\(x_r\)</th><th>\(f(x_l)\)</th>
+                <th>\(f(x_u)\)</th><th>\(f(x_r)\)</th><th>\(|\\epsilon _a|\%\)</th></tr>";
             echo($output);
         }
     }
